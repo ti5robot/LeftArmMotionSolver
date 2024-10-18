@@ -67,7 +67,7 @@
   示例：
       int main()
       {
-          login();
+          Start();
           cout<<"login success"<<endl;
           mechanical_arm_origin();
           sleep(3);
@@ -75,6 +75,7 @@
           cout<<endl;
           show_value("TH.j= ",TH.j);
           exit_progrem();
+          Exit();
           return 0;
       }
   ```
@@ -166,9 +167,9 @@
   示例：
       int main()
       {
-          login();
+          Start();
           mechanical_arm_origin();
-          logout();
+          Exit();
           return 0;
        }
   ```
@@ -238,12 +239,14 @@
   示例：
      int main()
      {
+        Start();
         float savepos[6]={0};
         get_current_pose(savepos);
         for(int i=0,i<6;i++)
         {
           cout<<"joint:"<<savepos[i];
         }
+        Exit();
         return 0;
      }
   ```
