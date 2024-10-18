@@ -32,71 +32,12 @@ extern float angl[IDNUM]; // bais[6]:实际位置相较于理论位置的偏置
 
 extern int lmsg;
 extern float msg[1024];
-// extern char* filename;//数据点存储文件
-
-extern uint32_t plan_move_parameterList[6];
-extern float plan_move_nparameterList[50][6];
 
 extern char Info_Str[20]; // 定义一个字符数组用于存储 flag 的字符串表示
 
-struct Coordinate
-{
-    double x;
-    double y;
-    double z;
-    double r;
-    double p;
-    double ry;
-};
-
-struct Point3D
-{
-    double x;
-    double y;
-    double z;
-};
-
-/*定义机械臂结构体*/
-struct Arm
-{
-    double joint1;
-    double joint2;
-    double joint3;
-    double joint4;
-    double joint5;
-    double joint6;
-};
-/*定义路径点结构体*/
-struct PathPoint
-{
-    double x;
-    double y;
-    double z;
-    double roll;
-    double pitch;
-    double yaw;
-};
-
-/*坐标点x，y，z*/
-struct Point
-{
-    float x;
-    float y;
-    float z;
-};
 
 extern "C"
 { // 添加：extern C
-
-    void setn(int npL[IDNUM]);
-
-    void movebyn(float npL[IDNUM]);
-
-    void ACTmove(float *a, float *b, float T0);
-
-    void plan_move();
-
-    void Upper_controller();
 
     /*机械臂关节运动
 		参数：
@@ -114,15 +55,17 @@ extern "C"
     */
     void move_to_pos(float *pos,float value,int dim,bool absolute);
 
-    /*获取当前角度*/
-    int current_angle();
+    /*获取当前角度
+    参数：
+        goal_j：存储角度的数组
+    */
+    void get_current_angle(float goal_j[7]);
 
     /*获取当前位姿
-    eg:
-        float qqq[6];
-        current_pose(qqq);
+    参数：
+        posz：存储位姿的数组
     */
-    int current_pose(float posz[]);
+    void get_current_pose(float posz[6]);
 
     /*机械臂刹车*/
     bool brake();
@@ -141,6 +84,16 @@ extern "C"
 
     /*机械臂回到原点*/
     void mechanical_arm_origin();
+
+    void setn(int npL[IDNUM]);
+
+    void movebyn(float npL[IDNUM]);
+
+    void ACTmove(float *a, float *b, float T0);
+
+    void plan_move();
+
+    void Upper_controller();
 
 } // 添加：extern C
 #endif
