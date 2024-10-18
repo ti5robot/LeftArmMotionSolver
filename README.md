@@ -188,7 +188,7 @@
         brake();  
         cout << "stop!!" << endl;
         inspect_brake(); 
-        logout();
+        Exit();
         exit(signum);
      }
   ```
@@ -206,7 +206,7 @@
         brake();  
         cout << "stop!!" << endl;
         inspect_brake(); 
-        logout();
+        Exit();
         exit(signum);
      }
   ```
