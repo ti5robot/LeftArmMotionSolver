@@ -176,21 +176,6 @@
       }
   ```
 
-+ void get_elc_info();
-  ```
-  函数功能：获取电机参数
-  返回值：无
-  参数：无
-  示例：
-      int main()
-      {
-          login();
-          get_elc_info();
-          logout();
-          return 0;
-      }
-  ```
-
 + void set_elc_info(uint32_t *elc_parameterlist,int elc_num, int parameterType,uint32_t elc_value);
    ```
    函数功能：设置电机参数
