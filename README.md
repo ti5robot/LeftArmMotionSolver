@@ -96,13 +96,13 @@
       cout << endl;
   ```
 
-+ void login();
++ void Start();
   ```
   函数功能：登录can设备
   返回值：无
   参数：无
   示例：
-      login();
+      Start();
       getCurrentposition->getParameter(canidList, reg_min_app_position, MotorTypeHelper::REG_MIN_APP_POSITION, IDNUM);
       for (int i = 0; i < 6; i++)
       {
@@ -113,13 +113,13 @@
       cout << endl;
   ```
 
-+ void logout();//函数功能：登出can设备
++ void Exit();//函数功能：登出can设备
     ```
   函数功能：登录can设备
   返回值：无
   参数：无
   示例：
-      login();
+      Start();
       getCurrentposition->getParameter(canidList, reg_min_app_position, MotorTypeHelper::REG_MIN_APP_POSITION, IDNUM);
       for (int i = 0; i < 6; i++)
       {
@@ -128,7 +128,7 @@
             writeDebugInfoToFile(__func__, LogInfo);
       }
       cout << endl;
-      logout();
+      Exit();
   ```
 
 + std::vector<std::string> query_can();
@@ -192,9 +192,8 @@
      }
   ```
 
-
 + bool IsBrake();//机械臂是否停止运动
-     ```
+  ```
   函数功能：机械臂刹车
   返回值：成功返回true
   参数：无
@@ -210,6 +209,84 @@
         exit(signum);
      }
   ```
+     
++ void get_current_angle(float goal_j[7]);//获取当前角度
+  ```
+  函数功能：获取当前角度
+  返回值：无
+  参数：goal_j：存储角度的数组
+  示例：
+     int main()
+     {
+        float saveJoint[7]={0};
+        get_current_angle(saveJoint);
+        for(int i=0,i<7;i++)
+        {
+          cout<<"joint:"<<saveJoint[i];
+        }
+        return 0;
+     }
+  ```
+
++ void get_current_pose(float posz[6]);//获取当前位姿
+  ```
+    函数功能：获取当前位姿
+    返回值：无
+    参数：
+        posz：存储位姿的数组
+    */
+  示例：
+     int main()
+     {
+        float savepos[6]={0};
+        get_current_pose(savepos);
+        for(int i=0,i<6;i++)
+        {
+          cout<<"joint:"<<savepos[i];
+        }
+        return 0;
+     }
+  ```
+
++ void joint_to_move(float *goal_j);//机械臂关节运动
+  ```
+    函数功能：机械臂关节运动
+    返回值：无
+    参数：
+        goal_j：目标关节角
+    */
+  示例：
+     int main()
+     {
+        Start();
+        float num[7]={3.14099,1.17288,-0.608523,0.799968,-2.9569,0.478535,-0.682677};
+        joint_to_move(num);
+        Exit();
+        return 0;
+     }
+  ```
+
++ void move_to_pos(float *pos,float value,int dim,bool absolute);//机械臂位姿运动
+  ```
+    函数功能：机械臂位姿运动
+    返回值：无
+    参数：
+        pos：目标位置
+        value：dim的值
+        dim：0~2 代表x,y,z
+        absolute：true的时候是绝对位置（以胸部原点位置），false的时候是相对位置（以当前点胳膊轴位置）
+    */
+  示例：
+     int main()
+     {
+        Start();
+        float num[6]={150, 266.047, -400, -1.89695, 2.8, 0.826565};
+        move_to_pos(pos, value, dim, absolute);
+        Exit();
+        return 0;
+     }
+  ```
+
 
 
 
