@@ -52,33 +52,6 @@
 
 机械臂控制基础库，包含了基本控制以及信息，用户在使用时需要根据自身使用方式自行选择调用。
 
-+ bool inspect_brake();
-  ```
-  函数功能：查询机械臂是否停止运动
-  返回值：true停止，false未停止
-  参数：无
-  示例：bool result=inspect_brake()
-  ```
-+ void exit_progrem();//函数功能：退出程序
-  ```
-  函数功能：查询机械臂是否停止运动
-  返回值：true停止，false未停止
-  参数：无
-  示例：
-      int main()
-      {
-          Start();
-          cout<<"login success"<<endl;
-          mechanical_arm_origin();
-          sleep(3);
-          show_value("pos:",TH.pos);
-          cout<<endl;
-          show_value("TH.j= ",TH.j);
-          exit_progrem();
-          Exit();
-          return 0;
-      }
-  ```
 + void writeDebugInfoToFile(const char *func_name, const char *info);
   ```
   函数功能：将信息写入log中
@@ -193,23 +166,6 @@
      }
   ```
 
-+ bool IsBrake();//机械臂是否停止运动
-  ```
-  函数功能：机械臂刹车
-  返回值：成功返回true
-  参数：无
-  示例：
-     void signalHandler(int signum)
-     {
-        char aaa;
-        cout << "Interrupt signal (" << signum << ") received.\n";
-        brake();  
-        cout << "stop!!" << endl;
-        inspect_brake(); 
-        Exit();
-        exit(signum);
-     }
-  ```
      
 + void get_current_angle(float goal_j[7]);//获取当前角度
   ```
