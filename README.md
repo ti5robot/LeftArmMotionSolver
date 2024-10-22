@@ -267,8 +267,20 @@
 
 ### 3.2 编译
 
+首先需要安装依赖：
+```
+sudo apt update
+sudo apt install -y libspdlog-dev libopencv-dev libudev-dev libfmt-dev
+```
+然后将usrlib中的libcontrolcan.so  libmylibscan.so libmylibti5.so文件拷贝到/usr/lib/下
+```
+cd ~/your_name_folder/usrlib
+sudo cp * /usr/lib
+```
+
 最后执行`gcc.sh`文件进行编译或通过以下命令进行编译生成可执行文件`move_sov`。(注意：以下路径是默认路径，如果修改了路径要替换成自己的)
 ```
+export CPLUS_INCLUDE_PATH=/your_name_folder/include:$CPLUS_INCLUDE_PATH
 g++ main.cpp  -L./include -lmylibti5 -L./include/can -lmylibscan -lcontrolcan -lspdlog -lfmt -ludev -o move_sov
 ```
 **运行**:
