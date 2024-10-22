@@ -46,7 +46,7 @@ void signalHandler(int signum)
     cout <<RED<< "stop!!" << RESET << endl;
     inspect_brake();
 
-    logout();
+    Exit();
     exit(signum);
 }
 
@@ -76,7 +76,7 @@ int main()
     cout << "qweqwdsaradasd" << endl;
     signal(SIGINT, signalHandler);
 
-    login();
+    Start();
     cout << "login success" << endl;
     // float goal_j[7]={0,-1.3,0.2,-0.6,-0.1,-0.2,0.3};TH.forward_move(goal_j);TH.show_crtpos();
     // plan_move();sleep(2);
@@ -134,6 +134,6 @@ int main()
     joint_to_move(goal_j2);
     sleep(1);
     mechanical_arm_origin();
-    logout();
+    Exit();
     return 0;
 }
