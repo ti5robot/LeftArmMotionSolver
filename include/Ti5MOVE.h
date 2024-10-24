@@ -44,6 +44,7 @@ extern "C"
 			goal_j：目标关节角
 		返回值：无*/
 	void joint_to_move(float *goal_j);
+    bool interrupt_joint_to_move(float *goal_j,std::atomic<bool>& stopMovement);
 
 	/*pos运动
     参数：
@@ -53,7 +54,7 @@ extern "C"
         absolute：true的时候是绝对位置（以胸部原点位置），false的时候是相对位置（以当前点胳膊轴位置）
     返回值：无
     */
-    void move_to_pos(float *pos,float value,int dim,bool absolute);
+    void pos_to_move(float *pos,float value,int dim,bool absolute);
 
     /*获取当前角度
     参数：
