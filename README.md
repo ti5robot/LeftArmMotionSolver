@@ -87,10 +87,10 @@
       cout << endl;
   ```
 
-+ void Exit();//函数功能：登出can设备
++ bool Exit();//函数功能：登出can设备
     ```
   函数功能：登录can设备
-  返回值：无
+  返回值：true 或者 false
   参数：无
   示例：
       Start();
