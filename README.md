@@ -70,11 +70,11 @@
       cout << endl;
   ```
 
-+ void Start();
++ bool Start();
   ```
   函数功能：登录can设备
   返回值：无
-  参数：无
+  参数：true 或者 false
   示例：
       Start();
       getCurrentposition->getParameter(canidList, reg_min_app_position, MotorTypeHelper::REG_MIN_APP_POSITION, IDNUM);
