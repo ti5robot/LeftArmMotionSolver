@@ -225,7 +225,7 @@
      }
   ```
 
-+ void move_to_pos(float *pos,float value,int dim,bool absolute);//机械臂位姿运动
++ void pos_to_move(float *pos,float value,int dim,bool absolute);//机械臂位姿运动
   ```
     函数功能：机械臂位姿运动
     返回值：无
@@ -240,7 +240,7 @@
      {
         Start();
         float num[6]={150, 266.047, -400, -1.89695, 2.8, 0.826565};
-        move_to_pos(pos, value, dim, absolute);
+        pos_to_move(pos, value, dim, absolute);
         Exit();
         return 0;
      }
