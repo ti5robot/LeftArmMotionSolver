@@ -11,12 +11,8 @@
 #include "Ti5MOVE.h"
 #include "Ti5BASIC.h"
 #include "Ti5LOGIC.h"
-#include "communication.h"
 #include "mathfunc.h"
 #include "tool.h"
-
-#include "electrical_machinery.h"
-
 #include <csignal>
 
 #define RESET "\033[0m"
@@ -28,15 +24,6 @@
 #define CYAN "\033[36m"    /* Cyan */
 
 using namespace std;
-
-string filename;
-// string device_485_name;
-char device[] = "/dev/ttyUSB0";
-
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
-int thread_flag = 0;
-std::string ip_test = "192.168.130.11"; // socket通信测试参数
 
 void signalHandler(int signum)
 {

@@ -1,7 +1,6 @@
 #ifndef TI5MOVE_H
 #define TI5MOVE_H
 
-#include "communication.h"
 #include <unistd.h>
 #include <cstdlib>
 #include <chrono>
