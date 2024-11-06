@@ -70,11 +70,11 @@
       cout << endl;
   ```
 
-+ void Start();
++ bool Start();
   ```
   函数功能：登录can设备
   返回值：无
-  参数：无
+  参数：true 或者 false
   示例：
       Start();
       getCurrentposition->getParameter(canidList, reg_min_app_position, MotorTypeHelper::REG_MIN_APP_POSITION, IDNUM);
@@ -87,10 +87,10 @@
       cout << endl;
   ```
 
-+ void Exit();//函数功能：登出can设备
++ bool Exit();
     ```
-  函数功能：登录can设备
-  返回值：无
+  函数功能：断开can设备
+  返回值：true 或者 false
   参数：无
   示例：
       Start();
@@ -225,7 +225,7 @@
      }
   ```
 
-+ void move_to_pos(float *pos,float value,int dim,bool absolute);//机械臂位姿运动
++ void pos_to_move(float *pos,float value,int dim,bool absolute);//机械臂位姿运动
   ```
     函数功能：机械臂位姿运动
     返回值：无
@@ -240,7 +240,7 @@
      {
         Start();
         float num[6]={150, 266.047, -400, -1.89695, 2.8, 0.826565};
-        move_to_pos(pos, value, dim, absolute);
+        pos_to_move(pos, value, dim, absolute);
         Exit();
         return 0;
      }

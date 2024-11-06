@@ -103,7 +103,7 @@ int main()
     for (int i = 0; i < 3; i++)
     {
 
-        move_to_pos(pos, value, dim, absolute);
+        pos_to_move(pos, value, dim, absolute);
         TH.show_crtj();
         TH.showpointsinfo();
         TH.show_crtpos();
@@ -113,7 +113,7 @@ int main()
         value = 60;
         dim = 1;
         absolute = false;
-        move_to_pos(pos, value, dim, absolute);
+        pos_to_move(pos, value, dim, absolute);
         TH.show_crtj();
         TH.showpointsinfo();
         TH.show_crtpos();
@@ -123,7 +123,7 @@ int main()
         value = 237.875;
         dim = 1;
         absolute = true;
-        move_to_pos(pos, value, dim, absolute);
+        pos_to_move(pos, value, dim, absolute);
         TH.show_crtj();
         TH.showpointsinfo();
         TH.show_crtpos();
