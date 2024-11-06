@@ -68,5 +68,18 @@ extern "C"
   */
   std::vector<std::string> query_can();
 
+    /*获取电机错误状态
+    返回值：为电机错误
+      0：无错误
+      1：软件错误
+      2：过压
+      4：欠压
+      16：启动错误
+  */
+  int get_elektrische_Maschinen_status();
+
+  /*清除电机错误*/
+  void clear_elc_error();
+
 } // 添加extern "C"
 #endif

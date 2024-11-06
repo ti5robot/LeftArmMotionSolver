@@ -4,6 +4,8 @@
 #include "communication.h"
 #include <unistd.h>
 #include <cstdlib>
+#include <chrono>
+#include <thread>
 #include "can/SingleCaninterface.h"
 #include "can/motortypehelper.h"
 #include <vector>
@@ -12,7 +14,7 @@
 #include "Ti5BASIC.h"
 #include <time.h>
 
-#define USLEEPTIME 3000 // socket单条指令通信间隔（微秒）
+//#define USLEEPTIME 3000 // 单条指令通信间隔（微秒）
 #define RCV_Size (IDNUM + 2) * 4
 
 extern float AG;    // 启停时变速的采样间距（秒），须>=4*USLEEPTIME
@@ -33,7 +35,7 @@ extern float angl[IDNUM]; // bais[6]:实际位置相较于理论位置的偏置
 extern int lmsg;
 extern float msg[1024];
 
-extern char Info_Str[20]; // 定义一个字符数组用于存储 flag 的字符串表示
+extern char Info_Str[100]; // 定义一个字符数组用于存储 flag 的字符串表示
 
 
 extern "C"
@@ -44,7 +46,7 @@ extern "C"
 			goal_j：目标关节角
 		返回值：无*/
 	void joint_to_move(float *goal_j);
-    bool interrupt_joint_to_move(float *goal_j,std::atomic<bool>& stopMovement);
+    bool interrupt_joint_to_move(float *goal_j,std::atomic<bool>& stopMovement);//有中断功能
 
 	/*pos运动
     参数：
@@ -61,6 +63,7 @@ extern "C"
         goal_j：存储角度的数组
     */
     void get_current_angle(float goal_j[7]);
+    bool interrupt_get_current_angle(float goal_j[7],std::atomic<bool>& stopMovement);//有中断功能
 
     /*获取当前位姿
     参数：
@@ -91,10 +94,19 @@ extern "C"
     void movebyn(float npL[IDNUM]);
 
     void ACTmove(float *a, float *b, float T0);
+    bool interrupt_joint_ACTmove(float *a, float *b, float T0,std::atomic<bool>& stopMovement); // 实际运动
+	
 
     void plan_move();
+    void interrupt_plan_move(std::atomic<bool>& stopMovement);
 
     void Upper_controller();
+
+    /*没有解算器和正运动*/
+    void set_motor_position(float crtj[IDNUM]);
+
+    //右臂运动
+    void RightArmMove(float *crtj);
 
 } // 添加：extern C
 #endif
