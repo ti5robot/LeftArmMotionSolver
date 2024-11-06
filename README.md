@@ -276,13 +276,17 @@ sudo apt install -y libspdlog-dev libopencv-dev libudev-dev libfmt-dev
 ```
 cd ~/your_name_folder/usrlib
 sudo cp * /usr/lib
+如果是2004的系统的话：
+cd ~/your_name_folder/usrlib/2004
+sudo cp * /usr/lib
 ```
 
 最后执行`gcc.sh`文件进行编译或通过以下命令进行编译生成可执行文件`move_sov`。(注意：以下路径是默认路径，如果修改了路径要替换成自己的)
 ```
+cd ~/your_name_folder/src
 export CPLUS_INCLUDE_PATH=/your_name_folder/include:$CPLUS_INCLUDE_PATH
-g++ main.cpp  -L./include -lmylibti5_2004 -L./include/can -lmylibscan -lcontrolcan -lspdlog -lfmt -ludev -o move_sov(在ubuntu2004下)
-g++ main.cpp  -L./include -lmylibti5 -L./include/can -lmylibscan -lcontrolcan -lspdlog -lfmt -ludev -o move_sov(在ubuntu2204下)
+g++ main.cpp  -L./include -lmylibti5_2004 -L./include/can -lmylibscan -lcontrolcan  -lfmt -ludev -o move_sov(在ubuntu2004下)
+g++ main.cpp  -L./include -lmylibti5 -L./include/can -lmylibscan -lcontrolcan  -lfmt -ludev -o move_sov(在ubuntu2204下)
 ```
 **运行**:
 ```
