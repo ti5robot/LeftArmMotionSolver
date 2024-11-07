@@ -74,6 +74,7 @@
 #define SET_OVER_TEMP_PROTECTION	48
 #define	GET_REG_TEMP	49
 #define	SET_BAUD_RATE	63
+#define SET_POSITION_GET_CSP  68
 #define	SET_CAL_POSITION	80
 #define	SET_MOTOR_EMERGENCY_STOP	82
 #define	SET_MOTOR_POSITION_OFFSET	83
@@ -137,6 +138,7 @@ public:
 
     virtual int  set_reg_position_kp(int value)override;
     virtual int  set_reg_position_kd(int value)override;
+    virtual int set_position_get_csp(int value ,int16_t &current, int16_t &speed, int32_t &position)override;
 
     virtual int  set_reg_speed_kp(int value) override; 
     virtual int  set_reg_speed_ki(int value) override;
@@ -184,6 +186,7 @@ private:
     int sendFrame(uint16_t canID,const uint8_t *frameBuffer,uint32_t size);
     int getParameter(uint8_t requestType);
     int setParameter(uint8_t requestType,int value);
+    int set_getParameter(uint8_t requestType,int value, int16_t &current, int16_t &speed, int32_t &position);
     int setRobotParameter(uint8_t robotType, float value);
     int setRobotIntParameter(uint8_t requestType,int value);
     int setFloatParameter(uint8_t requestType,float value);

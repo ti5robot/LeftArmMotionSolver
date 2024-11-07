@@ -76,6 +76,7 @@ public:
     virtual int  set_reg_position_kp(int value) =0; //位置环比例
     virtual int  set_reg_position_kd(int value) =0; //位置环微分
 
+    virtual int  set_position_get_csp(int value ,int16_t &current, int16_t &speed, int32_t &position)=0;//设置位置并获取电流速度位置
     virtual int  set_reg_speed_kp(int value) =0;    //速度环比例
     virtual int  set_reg_speed_ki(int value) =0;    //速度环积分
     virtual int  set_reg_speed_kd(int value) =0;    //速度环微分
@@ -131,6 +132,8 @@ protected:
     float receiveData = 0;
     std::string motorModel;
 
+    uint32_t readTimeOut=10;
+    uint16_t canDelayTime = 1;
 
 };
 

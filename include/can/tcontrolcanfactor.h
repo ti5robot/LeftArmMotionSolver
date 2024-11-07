@@ -22,6 +22,7 @@ public:
     int readParameter(uint8_t requestType, int32_t &recieveData);
     int setParameter(uint8_t requestType, int32_t &recieveData);
     int setRobotParameter(uint8_t robotType, float &recieveData);
+    int setGetCSP(int value, int16_t &current, int16_t &speed, int32_t &position);
 
     int getStatus();
     int getErrorStatus();

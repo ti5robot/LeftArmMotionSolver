@@ -191,7 +191,6 @@
     返回值：无
     参数：
         posz：存储位姿的数组
-    */
   示例：
      int main()
      {
@@ -213,7 +212,6 @@
     返回值：无
     参数：
         goal_j：目标关节角
-    */
   示例：
      int main()
      {
@@ -234,7 +232,6 @@
         value：dim的值
         dim：0~2 代表x,y,z
         absolute：true的时候是绝对位置（以胸部原点位置），false的时候是相对位置（以当前点胳膊轴位置）
-    */
   示例：
      int main()
      {
@@ -244,6 +241,39 @@
         Exit();
         return 0;
      }
+  ```
+  
+  + void GetP_joint_to_move(float *goal_j,float *CUrrentJointPosition);
+  ```
+     函数功能：机械臂关节运动，同时获取当前位置
+     返回值：无
+	 参数：
+		goal_j：目标关节角
+		CUrrentJointPosition：存储当前位置
+  示例：
+	 int main()
+	 {
+		Start();
+		float goal_j9[7]={3.1299,1.17288,-0.608523,0.799968,-2.9569,0.478535,-0.682677};
+		float goal_j3[7]={3.1099,1.17288,-0.608523,0.799968,-2.9569,0.478535,1.682677};
+		
+		GetP_joint_to_move(goal_j9, CJPosition);
+		cout<<"CJPosition:";
+		for(int i=0;i<7;i++){
+			cout<<" "<<CJPosition[i];
+		}
+		cout<<endl;
+		sleep(1);
+		GetP_joint_to_move(goal_j3, CJPosition);
+		cout<<"CJPosition:";
+		for(int i=0;i<7;i++){
+			cout<<" "<<CJPosition[i];
+		}
+		cout<<endl;
+		
+		Exit();
+		return 0;
+	 }
   ```
 
 
@@ -280,9 +310,10 @@ sudo cp * /usr/lib
 
 最后执行`gcc.sh`文件进行编译或通过以下命令进行编译生成可执行文件`move_sov`。(注意：以下路径是默认路径，如果修改了路径要替换成自己的)
 ```
+cd ~/your_name_folder/src
 export CPLUS_INCLUDE_PATH=/your_name_folder/include:$CPLUS_INCLUDE_PATH
-g++ main.cpp  -L./include -lmylibti5_2004 -L./include/can -lmylibscan -lcontrolcan -lspdlog -lfmt -ludev -o move_sov(在ubuntu2004下)
-g++ main.cpp  -L./include -lmylibti5 -L./include/can -lmylibscan -lcontrolcan -lspdlog -lfmt -ludev -o move_sov(在ubuntu2204下)
+g++ main.cpp  -L./include -lmylibti5_2004 -L./include/can -lmylibscan -lcontrolcan  -lfmt -ludev -o move_sov(在ubuntu2004下)
+g++ main.cpp  -L./include -lmylibti5 -L./include/can -lmylibscan -lcontrolcan  -lfmt -ludev -o move_sov(在ubuntu2204下)
 ```
 **运行**:
 ```

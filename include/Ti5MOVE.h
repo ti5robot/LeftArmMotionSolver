@@ -1,6 +1,7 @@
 #ifndef TI5MOVE_H
 #define TI5MOVE_H
 
+#include "communication.h"
 #include <unistd.h>
 #include <cstdlib>
 #include <chrono>
@@ -46,6 +47,15 @@ extern "C"
 		返回值：无*/
 	void joint_to_move(float *goal_j);
     bool interrupt_joint_to_move(float *goal_j,std::atomic<bool>& stopMovement);//有中断功能
+    void setGetCSP_joint_to_move(float *goal_j,int32_t *positionList);
+
+    /*机械臂关节运动，同时获取当前位置
+        参数：
+            goal_j：目标关节角
+            CUrrentJointPosition：存储当前位置
+        返回值：无
+    */
+    void GetP_joint_to_move(float *goal_j,float *CUrrentJointPosition);
 
 	/*pos运动
     参数：
@@ -94,10 +104,12 @@ extern "C"
 
     void ACTmove(float *a, float *b, float T0);
     bool interrupt_joint_ACTmove(float *a, float *b, float T0,std::atomic<bool>& stopMovement); // 实际运动
-	
+	void setGetCSP_ACTmove(float *a, float *b, float T0,int32_t positionList[7]);
 
     void plan_move();
     void interrupt_plan_move(std::atomic<bool>& stopMovement);
+    void setGetCSP_plan_move(int32_t *positionList);
+    void GetP_plan_move(float *CUrrentJointPosition);
 
     void Upper_controller();
 

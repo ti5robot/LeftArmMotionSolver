@@ -17,6 +17,12 @@ public:
     bool getParameter(uint8_t *nodeList,uint32_t *parameterList, int parameterType,int nodeCount);
     bool setParameter(uint32_t *parameterList, int parameterType,int nodeCount);
     bool setParameter(uint8_t *nodeList,uint32_t *parameterList, int parameterType,int nodeCount);    // 设置Reduction ratio减速比
+    
+    /***
+    *parameterList:设置位置参数  nodeCount:设置电机个数 （关节长度)  currentList:获取电流   speedList:获取速度    position:获取位置,nodeList：存放电机（关节）具体节点,id:1-6
+    ***/
+   bool setGetCSP(uint32_t *parameterList,int nodeCount,int16_t *currentList, int16_t *speedList, int32_t *positionList);
+    bool setGetCSP(uint8_t *nodeList,uint32_t *parameterList,int nodeCount,int16_t *currentList, int16_t *speedList, int32_t *positionList);
     /***
      * 设置kt电机扭矩常数
      * 设置kp
