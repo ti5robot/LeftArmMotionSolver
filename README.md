@@ -243,7 +243,7 @@
      }
   ```
   
-  + void GetP_joint_to_move(float *goal_j,float *CUrrentJointPosition);
++ void GetP_joint_to_move(float *goal_j,float *CUrrentJointPosition);
   ```
      函数功能：机械臂关节运动，同时获取当前位置
      返回值：无
