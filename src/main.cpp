@@ -65,22 +65,7 @@ int main()
 
     Start();
     cout << "login success" << endl;
-    // float goal_j[7]={0,-1.3,0.2,-0.6,-0.1,-0.2,0.3};TH.forward_move(goal_j);TH.show_crtpos();
-    // plan_move();sleep(2);
-    // sleep(4);
-    /*
-    //float goal_j[7]={3.00159,1.3,-0.999998,0.799998,-2.44159,0.4,-0.500003};TH.forward_move(goal_j);TH.show_crtpos();
-    float goal_j[7]={0};
-    for(int i=0;i<7;i++){
-        goal_j[i]=0.5;
-        TH.forward_move(goal_j);//TH.show_crtpos();
-        plan_move();sleep(2);
-        goal_j[i]=0;
-        TH.forward_move(goal_j);//TH.show_crtpos();
-        plan_move();sleep(2);
-    }
 
-    */
 
     float pos[6] = {150, 266.047, -400, -1.89695, 2.8, 0.826565};
     float value = 237.875;
